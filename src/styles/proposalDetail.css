@@ -1,0 +1,215 @@
+/* src/styles/proposalDetail.css - .app 스타일 제거 */
+
+:root {
+    --orange: #ffa451;
+    --cream: #fff5e1;
+    --white: #ffffff;
+    --black: #000000;
+  }
+  
+  /* ========== .app, body, header, divider, bottom-nav 스타일 제거 ========== */
+  /* 이 스타일들은 모두 home.css에서 가져옴 */
+  
+  /* ========== 제안 상세 메인 추가 스타일 ========== */
+  .proposal-detail-main {
+    /* main-content 기본 스타일 상속 */
+  }
+  
+  /* ========== 상단 카드 ========== */
+  .proposal-hero {
+    background: linear-gradient(180deg, #fff5e1 0%, #ffd4a3 50%, #ffa451 100%);
+    border-radius: 0 0 30px 30px;
+    padding: 30px 24px 24px;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+  }
+  
+  /* 픽셀 장식 */
+  .pixel-deco {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: flex;
+    gap: 6px;
+  }
+  
+  .pixel-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+  
+  /* 인사말 */
+  .greeting-box {
+    margin-bottom: 16px;
+  }
+  
+  .greeting-title {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  
+  .greeting-text {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.5;
+  }
+  
+  .greeting-text strong {
+    font-weight: 700;
+  }
+  
+  /* 가게 뱃지 */
+  .shop-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--black);
+    border-radius: 20px;
+    padding: 7px 14px;
+    margin-bottom: 16px;
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    color: var(--black);
+  }
+  
+  .shop-icon {
+    width: 15px;
+    height: 15px;
+    color: var(--orange);
+  }
+  
+  /* 메뉴 카드 */
+  .menu-detail-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--black);
+    border-radius: 16px;
+    padding: 18px 14px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  
+  .menu-detail-name {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  
+  .menu-detail-price {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--orange);
+  }
+  
+  /* 버튼 그룹 */
+  .action-btn-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .proposal-action-btn {
+    flex: 1;
+    height: 48px;
+    border: 2px solid var(--black);
+    border-radius: 12px;
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  
+  .proposal-action-btn.primary {
+    background: var(--orange);
+    color: var(--white);
+  }
+  
+  .proposal-action-btn.secondary {
+    background: var(--white);
+    color: var(--orange);
+  }
+  
+  .proposal-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .proposal-action-btn:active {
+    transform: translateY(0);
+  }
+  
+  .action-icon {
+    width: 19px;
+    height: 19px;
+  }
+  
+  /* ========== 브랜드 섹션 ========== */
+  .brand-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px 90px;
+    min-height: 150px;
+  }
+  
+  .brand-title {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--orange);
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  /* ========== 반응형 ========== */
+  @media (max-width: 380px) {
+    .proposal-hero {
+      padding: 24px 20px 20px;
+    }
+  
+    .greeting-title {
+      font-size: 22px;
+    }
+  
+    .greeting-text {
+      font-size: 14px;
+    }
+  
+    .menu-detail-name {
+      font-size: 14px;
+    }
+  
+    .menu-detail-price {
+      font-size: 15px;
+    }
+  
+    .action-btn-group {
+      flex-direction: column;
+    }
+  
+    .proposal-action-btn {
+      width: 100%;
+    }
+  
+    .brand-title {
+      font-size: 34px;
+    }
+  }

@@ -1,0 +1,214 @@
+/* src/styles/favorites.css */
+
+:root {
+    --orange: #ffa451;
+    --cream: #fff5e1;
+    --white: #ffffff;
+    --black: #000000;
+    --pink: #ff6b9d;
+  }
+  
+  /* ========== 찜 목록 섹션 ========== */
+  .favorites-section {
+    flex: 1;
+    padding: 20px 20px 90px;
+    overflow-y: auto;
+  }
+  
+  .favorites-title {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  /* ========== 찜 카드 ========== */
+  .favorite-item {
+    background: var(--orange);
+    border: 2px dashed var(--white);
+    border-radius: 20px;
+    padding: 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .favorite-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .favorite-item:active {
+    transform: translateY(-1px);
+  }
+  
+  /* 가게 이름 */
+  .favorite-store-name {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 30px;
+  }
+  
+  /* 가게 이미지 */
+  .favorite-img {
+    width: 100%;
+    aspect-ratio: 1.4 / 1;
+    background: var(--white);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* 메뉴 & 가격 */
+  .favorite-details {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  
+  .favorite-menu {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 6px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 28px;
+  }
+  
+  .favorite-price {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--black);
+  }
+  
+  /* 찜 해제 버튼 */
+  .unfavorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: transform 0.2s;
+  }
+  
+  .unfavorite-btn:hover {
+    transform: scale(1.2);
+  }
+  
+  .heart-icon-favorite {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .heart-icon-favorite.filled {
+    color: var(--pink);
+  }
+  
+  /* ========== 빈 상태 ========== */
+  .favorites-empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 90px;
+  }
+  
+  .empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .empty-heart {
+    width: 100px;
+    height: 100px;
+    background: var(--orange);
+    border-radius: 50%;
+    border: 3px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .empty-heart-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--cream);
+  }
+  
+  .empty-message {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--black);
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  /* ========== 스크롤바 ========== */
+  .favorites-section::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .favorites-section::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .favorites-section::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 3px;
+  }
+  
+  .favorites-section::-webkit-scrollbar-thumb:hover {
+    background: #ff9535;
+  }
+  
+  /* ========== 반응형 ========== */
+  @media (max-width: 380px) {
+    .favorites-grid {
+      gap: 12px;
+    }
+  
+    .favorite-item {
+      padding: 12px;
+    }
+  
+    .favorites-section {
+      padding: 16px 16px 90px;
+    }
+  }

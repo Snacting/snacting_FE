@@ -1,0 +1,662 @@
+/* ==========================
+   STANDARD MOBILE WEB LAYOUT
+   Screen width: 360–420px
+   Layout max width: 393px (기기 기준)
+   ========================== */
+
+/* 210 OmniGothic 폰트 */
+@font-face {
+    font-family: "210 OmniGothic";
+    src: url("../fonts/210OmniGothic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* fallback */
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap");
+  
+  :root {
+    --orange: #ffa451;
+    --cream: #fff5e1;
+    --white: #ffffff;
+    --black: #000000;
+  }
+  
+  /* reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    background: var(--cream);
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* ========================================
+     APP CONTAINER (Mobile standard size)
+     ======================================== */
+  .app {
+    height: 100vh;
+    width: 100%;
+    max-width: 393px; /* 모바일 표준 */
+    margin: 0 auto;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* ========================================
+     HEADER
+     ======================================== */
+  .header {
+    height: 80px;
+    background: var(--cream);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  
+  .logo {
+    font-family: "210 OmniGothic";
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--orange);
+    line-height: 1;
+  }
+  
+  /* cookie deco */
+  .cookie-left,
+  .cookie-right {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    gap: 4px;
+  }
+  
+  .cookie-left {
+    left: 20px;
+  }
+  
+  .cookie-right {
+    right: 20px;
+  }
+  
+  .cookie-pixel {
+    width: 13px;
+    height: 13px;
+    background: var(--orange);
+    border-radius: 4px;
+  }
+  
+  /* ========================================
+     DIVIDER (Zig-Zag)
+     ======================================== */
+  .divider {
+    height: 14px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--white) 0px,
+        var(--white) 8px,
+        transparent 8px,
+        transparent 16px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 10px,
+        var(--white) 10px,
+        var(--white) 12px
+      );
+    flex-shrink: 0;
+  }
+  
+  .divider.reverse {
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--white) 0px,
+        var(--white) 8px,
+        transparent 8px,
+        transparent 16px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0px,
+        transparent 10px,
+        var(--white) 10px,
+        var(--white) 12px
+      );
+  }
+  
+  /* ========================================
+     MAIN CONTENT
+     ======================================== */
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ========================================
+     FORM SECTION (홈 - 간식 요청하기)
+     ======================================== */
+  .form-section {
+    background: var(--white);
+    padding: 20px 24px;
+  }
+  
+  .section-title {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+  
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--black);
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    color: var(--orange);
+  }
+  
+  .input {
+    width: 100%;
+    height: 34px;
+    border: 1.4px solid var(--black);
+    border-radius: 17px;
+    padding: 0 12px;
+    font-size: 12px;
+    outline: none;
+  }
+  
+  .input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255, 164, 81, 0.2);
+  }
+  
+  .select-btn {
+    height: 32px;
+    background: var(--orange);
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1.4px solid var(--black);
+    font-size: 12px;
+    color: var(--white);
+    cursor: pointer;
+  }
+  
+  .submit-btn {
+    margin: 16px auto 0;
+    width: 220px;
+    height: 40px;
+    background: var(--orange);
+    border: 1.4px solid var(--black);
+    border-radius: 20px;
+    color: var(--white);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  /* ========================================
+     EMPTY PROPOSAL SECTION (홈 - 요청 전)
+     ======================================== */
+  .proposal-section {
+    flex: 1;
+    background: var(--cream);
+    padding: 28px 24px 90px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* cookie character */
+  .cookie-character {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cookie-body {
+    width: 80px;
+    height: 80px;
+    background: var(--orange);
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cookie-eyes {
+    display: flex;
+    gap: 14px;
+    position: absolute;
+    top: 22px;
+  }
+  
+  .eye {
+    width: 16px;
+    height: 18px;
+    background: var(--white);
+    border-radius: 50%;
+    border: 1.4px solid var(--black);
+    position: relative;
+  }
+  
+  .eye .pupil {
+    width: 8px;
+    height: 10px;
+    background: var(--black);
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: 4px;
+  }
+  
+  .cookie-mouth {
+    position: absolute;
+    bottom: 18px;
+    width: 30px;
+    height: 12px;
+    border: 2px solid var(--black);
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .empty-text {
+    font-size: 13px;
+    text-align: center;
+    color: var(--black);
+  }
+  
+  /* ========================================
+     RECENT REQUEST (요청 후 상태)
+     ======================================== */
+  .recent-request {
+    background: var(--white);
+    padding: 20px 24px;
+    flex-shrink: 0;
+  }
+  
+  .recent-request-title {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+  
+  .request-info-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .info-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    color: var(--black);
+  }
+  
+  .info-row.full-row {
+    grid-column: 1 / -1;
+  }
+  
+  .info-key {
+    font-weight: 400;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  
+  .info-val {
+    padding: 4px 12px;
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .category-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .category-tag {
+    height: 24px;
+    padding: 0 12px;
+    background: var(--orange);
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .request-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  
+  .action-btn {
+    height: 28px;
+    padding: 0 16px;
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 14px;
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--black);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .action-btn:hover {
+    background: var(--cream);
+    transform: translateY(-1px);
+  }
+  
+  .action-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* ========================================
+     PROPOSAL LIST (요청 후 상태)
+     ======================================== */
+  .proposal-list-section {
+    flex: 1;
+    background: var(--cream);
+    padding: 20px 24px 90px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  
+  .proposal-list-title {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+  
+  .proposal-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    padding-bottom: 10px;
+  }
+  
+  /* 제안 카드 */
+  .proposal-card {
+    background: var(--orange);
+    border: 1.5px solid var(--black);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    position: relative;
+    min-height: 88px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  
+  .proposal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .proposal-card:active {
+    transform: translateY(0);
+  }
+  
+  .card-image {
+    width: 68px;
+    height: 68px;
+    background: var(--white);
+    border: 1.5px solid var(--black);
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .store-logo {
+    text-align: center;
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-weight: 700;
+  }
+  
+  .logo-text {
+    font-size: 10px;
+    color: var(--black);
+    line-height: 1.3;
+  }
+  
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  
+  .store-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .location-icon-small {
+    width: 14px;
+    height: 14px;
+    color: var(--cream);
+    flex-shrink: 0;
+  }
+  
+  .store-name {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .menu-box {
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    padding: 8px 10px;
+    flex: 1;
+  }
+  
+  .menu-name {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .price-text {
+    font-family: "210 OmniGothic", "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--black);
+    margin-top: auto;
+    padding-top: 4px;
+  }
+  
+  .favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    z-index: 1;
+  }
+  
+  .favorite-btn:hover {
+    transform: scale(1.15);
+  }
+  
+  .heart-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--cream);
+  }
+  
+  .heart-icon.filled {
+    color: #ff6b9d;
+  }
+  
+  /* 제안 카드 스크롤바 */
+  .proposal-cards::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .proposal-cards::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .proposal-cards::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 3px;
+  }
+  
+  .proposal-cards::-webkit-scrollbar-thumb:hover {
+    background: #ff9535;
+  }
+  
+  /* ========================================
+     BOTTOM NAV (공통)
+     ======================================== */
+  .bottom-nav {
+    height: 70px;
+    background: var(--orange);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 40px;
+  }
+  
+  .nav-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .nav-icon {
+    width: 26px;
+    height: 26px;
+    color: var(--cream);
+  }
+  
+  .nav-label {
+    font-size: 11px;
+    color: var(--cream);
+  }
+  
+  /* ACTIVE */
+  .nav-btn.active .nav-icon {
+    color: var(--white);
+  }
+  
+  .nav-btn.active .nav-label {
+    color: var(--white);
+    font-weight: 600;
+  }
+  
+  /* ========================================
+     RESPONSIVE (Desktop shadow)
+     ======================================== */
+  @media (min-width: 394px) {
+    .app {
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
