@@ -1,0 +1,116 @@
+/* src/styles/splash.css */
+
+.splash-container {
+    width: 100%;
+    height: 100vh;
+    background: var(--snacting-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 픽셀 장식 */
+  .splash-decoration {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: var(--snacting-orange);
+    opacity: 0.8;
+  }
+  
+  .splash-decoration.top-left {
+    top: 0;
+    left: 0;
+    clip-path: polygon(
+      0 0, 100% 0, 100% 30%, 70% 30%, 70% 50%,
+      50% 50%, 50% 70%, 30% 70%, 30% 100%, 0 100%
+    );
+  }
+  
+  .splash-decoration.bottom-right {
+    bottom: 0;
+    right: 0;
+    clip-path: polygon(
+      100% 100%, 0 100%, 0 70%, 30% 70%, 30% 50%,
+      50% 50%, 50% 30%, 70% 30%, 70% 0, 100% 0
+    );
+  }
+  
+  /* 로고 영역 */
+  .splash-content {
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .logo-with-eyes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .splash-logo {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--snacting-orange);
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    margin: 0;
+  }
+  
+  .eye {
+    width: 24px;
+    height: 24px;
+    background: var(--snacting-white);
+    border: 3px solid var(--snacting-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .pupil {
+    width: 8px;
+    height: 8px;
+    background: var(--snacting-black);
+    border-radius: 50%;
+    animation: blink 3s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 48%, 52%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scaleY(0.1);
+      opacity: 0.8;
+    }
+  }
+  
+  .splash-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--snacting-black);
+    margin: 0;
+  }
+  
+  /* 페이드인 애니메이션 */
+  .splash-content {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

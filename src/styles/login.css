@@ -1,0 +1,145 @@
+/* src/styles/login.css */
+
+.login-container {
+    width: 100%;
+    height: 100vh;
+    background: var(--snacting-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-content {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  /* 헤더 */
+  .login-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .login-greeting {
+    font-size: 14px;
+    color: var(--snacting-black);
+    margin-bottom: 10px;
+  }
+  
+  .login-logo {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--snacting-orange);
+    letter-spacing: -1px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    margin: 0;
+  }
+  
+  /* 폼 */
+  .login-form {
+    width: 100%;
+  }
+  
+  .login-input-group {
+    background: var(--snacting-white);
+    border: 2px solid var(--snacting-orange);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  
+  .input-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--snacting-orange);
+  }
+  
+  .input-row:last-child {
+    border-bottom: none;
+  }
+  
+  .input-label {
+    background: var(--snacting-orange);
+    color: var(--snacting-black);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 15px 18px;
+    min-width: 80px;
+    text-align: center;
+  }
+  
+  .login-input {
+    flex: 1;
+    border: none;
+    padding: 15px;
+    font-size: 14px;
+    outline: none;
+    background: var(--snacting-white);
+  }
+  
+  .login-input::placeholder {
+    color: #999;
+  }
+  
+  .login-input:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+  }
+  
+  /* 에러 메시지 */
+  .error-message {
+    color: #ff4444;
+    font-size: 12px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  /* 제출 버튼 */
+  .login-submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--snacting-orange);
+    color: var(--snacting-white);
+    border: 2px solid var(--snacting-black);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 15px;
+  }
+  
+  .login-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  .login-submit-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* 반응형 */
+  @media (max-width: 400px) {
+    .login-logo {
+      font-size: 40px;
+    }
+  
+    .input-label {
+      min-width: 70px;
+      padding: 12px 15px;
+      font-size: 12px;
+    }
+  
+    .login-input {
+      padding: 12px;
+      font-size: 13px;
+    }
+  }
