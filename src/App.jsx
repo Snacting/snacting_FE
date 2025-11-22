@@ -25,24 +25,21 @@ function App() {
   // 주문서 조회 (앱 로드 시)
   useEffect(() => {
     if (authUtils.isAuthenticated()) {
+      const fetchOrders = async () => {
+        try {
+          const order = await orderService.getOrders(); // 객체 하나
+          console.log('📥 기존 주문서:', order);
+          if (order) {
+            setRequestData(order);
+          }
+        } catch (error) {
+          console.error('주문서 조회 실패:', error);
+        }
+      };
+  
       fetchOrders();
     }
   }, []);
-
-  const fetchOrders = async () => {
-    try {
-      console.log('📋 주문서 조회 시작');
-      const orders = await orderService.getOrders();
-      console.log('📋 주문서 조회 결과:', orders);
-      
-      if (orders && orders.length > 0) {
-        setRequestData(orders[0]); // 가장 최근 주문서
-      }
-    } catch (error) {
-      console.error('❌ 주문서 조회 실패:', error);
-    }
-  };
-
   // 사장 제안 조회
   useEffect(() => {
     if (requestData && authUtils.isAuthenticated()) {
@@ -73,12 +70,12 @@ function App() {
 
       // API로 전송할 데이터 구성
       const orderData = {
-        place: data.place,
-        datetime: data.datetime,
-        people: parseInt(data.people),
-        totalBudget: parseInt(data.totalBudget) || 0,
-        perPersonBudget: parseInt(data.perPersonBudget) || 0,
-        categories: data.categories || []
+        headcount: Number(data.people),              // 인원
+        totalBudget: Number(data.totalBudget),       // 총 예산
+        budgetPerPerson: Number(data.perPersonBudget), // 1인 예산
+        categories: data.categories,                 // ['치킨/닭강정', '도시락/간편식'] 이런 식
+        detailAddress: data.place,                   // 장소 → detailAddress 로 매핑
+        date: data.datetime   
       };
 
       console.log('📤 백엔드로 전송할 데이터:', orderData);
