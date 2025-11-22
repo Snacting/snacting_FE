@@ -1,75 +1,75 @@
-// src/components/RequestSummary.jsx
-import React from 'react';
-import { IoLocationSharp, IoCalendar, IoPeople, IoWallet, IoCash, IoRestaurant } from 'react-icons/io5';
 
 function RequestSummary({ data }) {
-  const categoryLabels = {
-    bunsik: '분식',
-    fastfood: '패스트푸드',
-    sandwich: '샌드위치',
-    chicken: '치킨/닭강정',
-    pizza: '피자'
-  };
-
-  return (
-    <div className="request-summary">
-      <div className="summary-row">
-        <div className="summary-field">
-          <label>
-            <IoLocationSharp className="icon" />
-            <span>장소</span>
-          </label>
-          <span className="value">{data.place}</span>
-        </div>
-
-        <div className="summary-field">
-          <label>
-            <IoCalendar className="icon" />
-            <span>일시</span>
-          </label>
-          <span className="value">{data.datetime}</span>
-        </div>
-      </div>
-
-      <div className="summary-field full">
-        <label>
-          <IoPeople className="icon" />
-          <span>인원</span>
-        </label>
-        <span className="value">{data.people} 명</span>
-      </div>
-
-      <div className="summary-field full">
-        <label>
-          <IoWallet className="icon" />
-          <span>총예산</span>
-        </label>
-        <span className="value">{parseInt(data.totalBudget).toLocaleString()} 원</span>
-      </div>
-
-      <div className="summary-field full">
-        <label>
-          <IoCash className="icon" />
-          <span>1인 예산</span>
-        </label>
-        <span className="value">{parseInt(data.perPersonBudget).toLocaleString()} 원</span>
-      </div>
-
-      <div className="summary-field full">
-        <label>
-          <IoRestaurant className="icon" />
-          <span>선호 메뉴 카테고리</span>
-        </label>
-        <div className="categories-display">
-          {data.categories.map(cat => (
-            <span key={cat} className="category-badge">
-              {categoryLabels[cat] || cat}
+    // data 자체가 없으면 그냥 아무것도 렌더링하지 않기
+    if (!data) {
+      return null;
+    }
+  
+    console.log('🧐 RequestSummary data:', data);
+  
+    // ✅ 백엔드 응답 스펙에 맞춰서 구조 분해
+    const {
+      nickname,
+      headcount,
+      totalBudget,
+      budgetPerPerson,
+      categories,
+      detailAddress,
+      date,
+    } = data;
+  
+    // ✅ categories가 undefined/null이어도 에러 안 나게
+    const safeCategories = Array.isArray(categories) ? categories : [];
+  
+    return (
+      <div className="request-summary">
+        <p className="request-title">
+          {nickname ? `${nickname}님이 요청한 간식` : '요청한 간식 정보'}
+        </p>
+  
+        <div className="request-summary-grid">
+          <div className="request-row">
+            <span className="request-key">인원</span>
+            <span className="request-val">{headcount}명</span>
+          </div>
+          <div className="request-row">
+            <span className="request-key">총 예산</span>
+            <span className="request-val">
+              {totalBudget?.toLocaleString()}원
             </span>
-          ))}
+          </div>
+          <div className="request-row">
+            <span className="request-key">1인 예산</span>
+            <span className="request-val">
+              {budgetPerPerson?.toLocaleString()}원
+            </span>
+          </div>
+          <div className="request-row">
+            <span className="request-key">날짜</span>
+            <span className="request-val">{date}</span>
+          </div>
+          <div className="request-row">
+            <span className="request-key">장소</span>
+            <span className="request-val">{detailAddress}</span>
+          </div>
+        </div>
+  
+        <div className="request-categories">
+          <span className="request-key">선호 카테고리</span>
+          {safeCategories.length > 0 ? (
+            <div className="category-tags">
+              {safeCategories.map((cat, idx) => (
+                <span key={idx} className="category-tag">
+                  {cat}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <span className="request-val">선호 카테고리가 없습니다</span>
+          )}
         </div>
       </div>
-    </div>
-  );
-}
-
-export default RequestSummary;
+    );
+  }
+  
+  export default RequestSummary;

@@ -2,40 +2,27 @@
 import apiClient from './api';
 
 export const orderService = {
-  // 주문서 조회
+  // 주문서 조회 (현재 유저의 주문서 1개)
   getOrders: async () => {
     try {
-      console.log('🔍 주문서 조회 API 호출');
-      const response = await apiClient.get('/api/orders');
-      console.log('✅ getOrders 응답:', response.data);
-      return response.data || [];
-    } catch (error) {
-      console.error('❌ getOrders 에러:', error.response?.data || error.message);
-      // 404나 500 에러면 빈 배열 반환
-      if (error.response?.status === 404 || error.response?.status === 500) {
-        console.warn('⚠️ 주문서가 없습니다.');
-        return [];
+        const res = await apiClient.get('/api/orders');
+        console.log('📥 getOrders 응답:', res.data);
+        return res.data; // 배열X, 객체 그대로
+      } catch (error) {
+        console.error('❌ getOrders 에러:', error.response?.data || error);
+        throw error;
       }
-      throw error;
-    }
-  },
+    },
 
   // 주문서 생성
   createOrder: async (orderData) => {
     try {
       console.log('📝 주문서 생성 API 호출:', orderData);
-      
-      const response = await apiClient.post('/api/orders', orderData);
-      console.log('✅ createOrder 응답:', response.data);
-      
-      return response.data;
+      const res = await apiClient.post('/api/orders', orderData);
+      console.log('✅ createOrder 응답:', res.data);
+      return res.data;
     } catch (error) {
-      console.error('❌ createOrder 에러:', {
-        status: error.response?.status,
-        message: error.response?.data?.message,
-        data: error.response?.data
-      });
-      
+      console.error('❌ createOrder 에러:', error.response?.data || error);
       throw error;
     }
   },
@@ -44,11 +31,11 @@ export const orderService = {
   updateOrder: async (orderData) => {
     try {
       console.log('✏️ 주문서 수정 API 호출:', orderData);
-      const response = await apiClient.put('/api/orders', orderData);
-      console.log('✅ updateOrder 응답:', response.data);
-      return response.data;
+      const res = await apiClient.put('/api/orders', orderData);
+      console.log('✅ updateOrder 응답:', res.data);
+      return res.data;
     } catch (error) {
-      console.error('❌ updateOrder 에러:', error.response?.data || error.message);
+      console.error('❌ updateOrder 에러:', error.response?.data || error);
       throw error;
     }
   }
